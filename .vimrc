@@ -9,7 +9,7 @@ set nocindent
 set nosmartindent
 
 " General
-set list
+set nolist
 filetype on
 set ruler
 set hidden                     " For BufExplorer
@@ -81,8 +81,6 @@ if has('autocmd')                        " work in old vim versions too
 endif
 
 " Searching/Moving
-nnoremap / /\v                 " enable "very magic"
-vnoremap / /\v                 " enable "very magic"
 set ignorecase                 " only ignores case if search is all lowercase
 set smartcase
 set nogdefault                 " I habitually type s///g vs s///
@@ -121,7 +119,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 " Status Line
-set statusline=%<(%f)\ %h%m%r%=%-14.(line %l/%L%)\ %P
+set statusline=%<(%f)\ %h%m%r%=%-14.(%l/%L%)\ %P
 
 " Rebinds
 " Highly recommended you rebind CapsLock as Ctrl!
