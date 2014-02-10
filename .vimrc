@@ -59,7 +59,7 @@ endif
 " Syntax Highlighting
 set t_Co=256
 if &t_Co >= 256 || has("gui_running")
-   colorscheme tmac_modified
+   colorscheme epic
 endif
 
 if has('gui_running')
