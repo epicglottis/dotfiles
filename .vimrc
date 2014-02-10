@@ -1,5 +1,4 @@
 " epicglottis' vimrc file
-
 set nocompatible               " nocompat must be first
 
 " Indentation
@@ -9,8 +8,9 @@ set nocindent
 set nosmartindent
 
 " General
-set nolist
 filetype on
+syntax on
+set nolist
 set ruler
 set hidden                     " For BufExplorer
 set number                     " show line numbers
@@ -31,7 +31,6 @@ set backspace=indent,eol,start " allow backspace over everything
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                      " change the terminal title
 set autochdir                  " Auto lcd to whatever file is open
-syntax on
 
  " Automatically change the working directory to the current one
 au BufEnter * silent! lcd %:p:h
@@ -89,7 +88,6 @@ set showmatch                  " show matching braces
 set hlsearch
 nnoremap <tab> %
 vnoremap <tab> %
-
 
 " Undo
 set history=10000              " remember more commands and search history
