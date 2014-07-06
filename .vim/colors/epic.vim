@@ -9,7 +9,7 @@ if version > 580
 endif
 
 set t_Co=256
-let g:colors_name = "tmac_modified"
+let g:colors_name = "epic"
 
 "hi IncSearch -- no settings --
 "hi WildMenu -- no settings --
