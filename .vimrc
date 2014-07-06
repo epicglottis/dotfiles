@@ -1,4 +1,5 @@
 " epicglottis' vimrc file
+
 set nocompatible               " nocompat must be first
 
 " Indentation
@@ -8,8 +9,6 @@ set nocindent
 set nosmartindent
 
 " General
-filetype on
-syntax on
 set nolist
 set ruler
 set hidden                     " For BufExplorer
@@ -31,6 +30,7 @@ set backspace=indent,eol,start " allow backspace over everything
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                      " change the terminal title
 set autochdir                  " Auto lcd to whatever file is open
+syntax on
 
  " Automatically change the working directory to the current one
 au BufEnter * silent! lcd %:p:h
@@ -39,8 +39,32 @@ au BufEnter * silent! lcd %:p:h
 set laststatus=2               " Always display the last status
 hi StatusLine ctermfg=Cyan
 
-" pathogen/vundle
-" TODO
+" Vundle
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" " required!
+Bundle 'gmarik/vundle'
+
+" My bundles here:
+Bundle 'christoomey/vim-tmux-navigator'
+" DEPENDENCY: sudo apt-get install exuberant-ctags
+Bundle 'majutsushi/tagbar'
+
+filetype plugin indent on      " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install (update) bundles
+" :BundleSearch(!) foo - search (or refresh cache first) for foo
+" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle commands are not allowed.
+
 
 " code folding
 set foldmethod=syntax
@@ -89,6 +113,7 @@ set hlsearch
 nnoremap <tab> %
 vnoremap <tab> %
 
+
 " Undo
 set history=10000              " remember more commands and search history
 set undolevels=10000           " use many muchos levels of undo
@@ -100,7 +125,7 @@ set noswapfile                 " bad idea if you load large files
 set nowrap
 set formatoptions=qrn1
 if version >= 703
-  set colorcolumn=80           " Requires VIM 7.3
+  set colorcolumn=80
 else
   " color chars in line >80 in red
   highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -116,13 +141,18 @@ set cursorline cursorcolumn
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
+" Delete trailing whitespace on save:
+autocmd BufWritePre *.py :%s/\s\+$//e
+
 " Status Line
 set statusline=%<(%f)\ %h%m%r%=%-14.(%l/%L%)\ %P
 
 " Rebinds
 " Highly recommended you rebind CapsLock as Ctrl!
-nnoremap ; :                  " ; behaves the same as :
-inoremap jj <ESC>             " jj is also esc
+" ; behaves the same as :
+nnoremap ; :
+" jj is also esc
+inoremap jj <ESC>
 nnoremap j gj
 nnoremap k gk
 
@@ -162,15 +192,38 @@ cmap w!! w !sudo tee % >/dev/null
 " Normal Mode Leaders
 let mapleader = ","
 let g:mapleader = ","
-map <leader><space> :noh<cr>                               " ,<space> Clear search
-nnoremap <leader>1 yypVr=                                  " ,1   Add === of equal length to line below cursor
-nnoremap <leader>a :Ack                                    " ,a   Ack
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>         " ,ev  Open vimrc file
-nnoremap <leader>ft Vatzf                                  " ,ft  Fold tag
-nnoremap <leader>q gqip                                    " ,q   Re-hardwrap paragraphs of text
-nnoremap <leader>r :so ~/.vimrc<cr>:echo "reloaded!"<cr>   " ,    Reload ~/.vimrc
-nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR> " ,S   Sort CSS Properties
-nnoremap <leader>ss :setlocal spell!<cr>                   " ,ss  Toggle spell checking
-nnoremap <leader>v V`]                                     " ,v   Reselect text that was just pasted
-nnoremap <leader>w <C-w>v<C-w>l                            " ,w   Open split window and switch to it
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>           " ,W   Strip trailing whitespace in file
+" ,<space> Clear search
+map <leader><space> :noh<cr>
+
+" ,1   Add === of equal length to line below cursor
+nnoremap <leader>1 yypVr=
+
+" ,a   Ack
+nnoremap <leader>a :Ack
+
+" ,ev  Open vimrc file
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" ,ft  Fold tag
+nnoremap <leader>ft Vatzf
+
+" ,q   Re-hardwrap paragraphs of text
+nnoremap <leader>q gqip
+
+" ,    Reload ~/.vimrc
+nnoremap <leader>r :so ~/.vimrc<cr>:echo "reloaded!"<cr>
+
+" ,S   Sort CSS Properties
+nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+
+" ,ss  Toggle spell checking
+nnoremap <leader>ss :setlocal spell!<cr>
+
+" ,v   Reselect text that was just pasted
+nnoremap <leader>v V`]
+
+" ,w   Open split window and switch to it
+nnoremap <leader>w <C-w>v<C-w>l
+
+" ,W   Strip trailing whitespace in file
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
