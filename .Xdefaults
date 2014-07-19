@@ -1,0 +1,31 @@
+# Large history:
+URxvt*saveLines: 32768
+
+# Colors:
+URxvt*transparent: false
+URxvt*shading: 40
+URxvt*foreground: White
+URxvt*background: Black
+
+# Tweak blues:
+URxvt*color4: RoyalBlue
+URxvt*color12: RoyalBlue
+
+# Font:
+URxvt*font: xft:Ubuntu Mono:pixelsize=16:antialias=false:hinting=true
+URxvt*boldFont: xft:Ubuntu Mono:bold:pixelsize=16:antialias=false:hinting=true
+
+# Thin orange scrollbar on the right:
+URxvt*scrollBar: true
+URxvt*scrollBar_right: true
+URxvt*scrollstyle: plain
+URxvt*scrollColor: Orange
+
+# Default spacing feels wide:
+URxvt.letterSpace: -1
+
+# Make links clickable
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.colorUL: #4682B4
