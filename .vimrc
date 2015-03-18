@@ -16,8 +16,8 @@ Plugin 'majutsushi/tagbar'
 " WriteRoom style focus mode:
 Plugin 'junegunn/goyo.vim'
 
-" All your Plugins must be added before the following line
-call vundle@end()              " required
+" All of your Plugins must be added before the following line
+call vundle#end()              " required
 filetype plugin indent on      " required
 
 " Goyo plugin config
