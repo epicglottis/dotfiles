@@ -1,6 +1,50 @@
 " epicglottis' vimrc file
 
+" Vundle
 set nocompatible               " nocompat must be first
+filetype off                   " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" My bundles here:
+" DEPENDENCY: sudo apt-get install exuberant-ctags
+Plugin 'majutsushi/tagbar'
+" WriteRoom style focus mode:
+Plugin 'junegunn/goyo.vim'
+
+" All your Plugins must be added before the following line
+call vundle@end()              " required
+filetype plugin indent on      " required
+
+" Goyo plugin config
+let g:goyo_width = 80
+let g:goyo_margin_top = 0
+let g:goyo_margin_bottom = 0
+let g:goyo_linenr = 0
+function! s:goyo_enter()
+  silent !tmux set status off
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  set nocursorline nocursorcolumn
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  set showmode
+  set showcmd
+  set scrolloff=5
+  set cursorline cursorcolumn
+endfunction
+
+autocmd! User GoyoEnter
+autocmd! User GoyoLeave
+autocmd  User GoyoEnter nested call <SID>goyo_enter()
+autocmd  User GoyoLeave nested call <SID>goyo_leave()
 
 " Indentation
 set autoindent                 " always on
@@ -11,7 +55,6 @@ set nosmartindent
 " General
 set nolist
 set ruler
-set hidden                     " For BufExplorer
 set number                     " show line numbers
 if version >= 703
   set clipboard=unnamedplus    " Yank to X window clipboard (vim 7.3.74+)
@@ -19,7 +62,7 @@ endif
 set modelines=0
 set autoread
 set encoding=utf-8
-set scrolloff=3
+set scrolloff=5
 set showcmd
 set wildmenu
 set wildmode=longest,list,full " Wildcard expansion completion modes
@@ -38,33 +81,6 @@ au BufEnter * silent! lcd %:p:h
 " For split screen users: higlight the status line of the active window
 set laststatus=2               " Always display the last status
 hi StatusLine ctermfg=Cyan
-
-" Vundle
-filetype off                   " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" " required!
-Bundle 'gmarik/vundle'
-
-" My bundles here:
-Bundle 'christoomey/vim-tmux-navigator'
-" DEPENDENCY: sudo apt-get install exuberant-ctags
-Bundle 'majutsushi/tagbar'
-
-filetype plugin indent on      " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install (update) bundles
-" :BundleSearch(!) foo - search (or refresh cache first) for foo
-" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle commands are not allowed.
-
 
 " code folding
 set foldmethod=syntax
@@ -206,6 +222,9 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 " ,ft  Fold tag
 nnoremap <leader>ft Vatzf
+
+" ,g   Toggle 'WriteRoom' mode
+nnoremap <leader>g :Goyo<cr>
 
 " ,q   Re-hardwrap paragraphs of text
 nnoremap <leader>q gqip
