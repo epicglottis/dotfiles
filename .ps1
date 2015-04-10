@@ -36,7 +36,8 @@ _ps1() {
   # to tell bash they don't take up any space
   RETCODE="\[$CYAN\]\$? "
   DATE="\[$BLUE\]\D{%Y-%m-%d %H:%M:%S}"
-
+  
+  # TODO: Add a cute unicode symbol instead of @ :)
   P="\[$BGREEN\]\u\[$BGREEN\]@\[$LCYAN\]\h\[$NONE\]:"
 
   # Partial path if in clients directory:
