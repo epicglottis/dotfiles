@@ -6,6 +6,10 @@
 ####################
 # Common
 ####################
+# Use URxvt:
+export TERM=rxvt-unicode
+export LANG=en_US.UTF-8
+
 # Default emacs shortcuts suck. Use vi mode instead:
 set -o vi
 
@@ -84,6 +88,19 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 export LESS=" -R "
 export LESSOPEN="| ~/scripts/.lessfilter.sh %s"
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) 
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
 
 
 ####################
@@ -92,6 +109,11 @@ export LESSOPEN="| ~/scripts/.lessfilter.sh %s"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+alias ll='ls -harlotF'
+alias pps='ps awwfux'
+alias ddf='df -Tha --total'
+alias ddu='du -ach | sort -h'
 
 
 ####################
