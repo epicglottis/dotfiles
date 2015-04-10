@@ -1,13 +1,14 @@
 " epicglottis' vimrc file
 
-" Vundle
-set nocompatible               " nocompat must be first
+set nocompatible               " be iMproved, required
 filetype off                   " required
+syntax on
 
+" >>> VUNDLE START >>>
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
+" let Vundle manage Vundle, required:
 Plugin 'gmarik/Vundle.vim'
 
 " My bundles here:
@@ -30,7 +31,6 @@ function! s:goyo_enter()
   set noshowmode
   set noshowcmd
   set scrolloff=999
-  set nocursorline nocursorcolumn
 endfunction
 
 function! s:goyo_leave()
@@ -38,27 +38,53 @@ function! s:goyo_leave()
   set showmode
   set showcmd
   set scrolloff=5
-  set cursorline cursorcolumn
 endfunction
 
 autocmd! User GoyoEnter
 autocmd! User GoyoLeave
 autocmd  User GoyoEnter nested call <SID>goyo_enter()
 autocmd  User GoyoLeave nested call <SID>goyo_leave()
+" <<< VUNDLE END <<<
+
+" Color Syntax Highlighting
+set t_Co=256
+set background=dark
+if &t_Co >= 256 || has("gui_running")
+   colorscheme epic
+endif
+
+if has('gui_running')
+  set guifont=Source Code Pro\ 14
+endif
+
+ " Python!
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4
+setlocal textwidth=80
+setlocal smarttab
+setlocal expandtab
+
+" Rolodex mode!!
+set noequalalways
+set winminheight=0
+set winheight=9999
+set helpheight=9999
 
 " Indentation
-set autoindent                 " always on
-set copyindent                 " copy previous indentation
+set autoindent
+" copy previous indentation:
+set copyindent                 
 set nocindent
 set nosmartindent
 
 " General
+" Hide non-printable chars:
 set nolist
+" Show cursor position information at the bottom:
 set ruler
 set number                     " show line numbers
-if version >= 703
-  set clipboard=unnamedplus    " Yank to X window clipboard (vim 7.3.74+)
-endif
+
 set modelines=0
 set autoread
 set encoding=utf-8
@@ -73,7 +99,6 @@ set backspace=indent,eol,start " allow backspace over everything
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                      " change the terminal title
 set autochdir                  " Auto lcd to whatever file is open
-syntax on
 
  " Automatically change the working directory to the current one
 au BufEnter * silent! lcd %:p:h
@@ -94,16 +119,6 @@ if $TERM =~ '^screen-256color'
     map! <Esc>OH <Home>
     map <Esc>OF <End>
     map! <Esc>OF <End>
-endif
-
-" Syntax Highlighting
-set t_Co=256
-if &t_Co >= 256 || has("gui_running")
-   colorscheme epic
-endif
-
-if has('gui_running')
-  set guifont=Monospace\ 13
 endif
 
 " Tab Settings
@@ -148,11 +163,6 @@ else
   match OverLength /\%81v.\+/
 endif
 
-" Display vertical cursor:
-au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
-set cursorline cursorcolumn
-
 " Highlight trailing whitespace:
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -177,9 +187,9 @@ noremap <F5> :set invpaste paste?<CR>
 set pastetoggle=<F5>
 set showmode
 
-" F8 toggles tagbar
+" F8 toggles tagbar & resizes windows equally
 " DEPENDENCY: http://www.vim.org/scripts/script.php?script_id=3465
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR><C-w>=
 nmap <leader>8 :TagbarToggle<CR>
 
 " Get rid of that annoying F1 help message
@@ -229,7 +239,7 @@ nnoremap <leader>g :Goyo<cr>
 " ,q   Re-hardwrap paragraphs of text
 nnoremap <leader>q gqip
 
-" ,    Reload ~/.vimrc
+" ,r    Reload ~/.vimrc
 nnoremap <leader>r :so ~/.vimrc<cr>:echo "reloaded!"<cr>
 
 " ,S   Sort CSS Properties
@@ -238,8 +248,8 @@ nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 " ,ss  Toggle spell checking
 nnoremap <leader>ss :setlocal spell!<cr>
 
-" ,v   Reselect text that was just pasted
-nnoremap <leader>v V`]
+" ,v  Open vimrc file:
+nnoremap <leader>v <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 " ,w   Open split window and switch to it
 nnoremap <leader>w <C-w>v<C-w>l
