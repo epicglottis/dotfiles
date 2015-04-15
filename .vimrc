@@ -14,8 +14,6 @@ Plugin 'gmarik/Vundle.vim'
 " My bundles here:
 " DEPENDENCY: sudo apt-get install exuberant-ctags
 Plugin 'majutsushi/tagbar'
-" WriteRoom style focus mode:
-Plugin 'junegunn/goyo.vim'
 " Ctrl-P
 Plugin 'kien/ctrlp.vim'
 " NERDTree
@@ -32,7 +30,6 @@ call vundle#end()              " required
 filetype plugin indent on      " required
 
 " NERDTree config
-nmap \e :NERDTreeToggle<CR>
 nmap <F1> :NERDTreeToggle<CR>
 
 " Ctrl-P config
@@ -44,30 +41,6 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
-
-" Goyo plugin config
-let g:goyo_width = 80
-let g:goyo_margin_top = 0
-let g:goyo_margin_bottom = 0
-let g:goyo_linenr = 0
-function! s:goyo_enter()
-  silent !tmux set status off
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-endfunction
-
-function! s:goyo_leave()
-  silent !tmux set status on
-  set showmode
-  set showcmd
-  set scrolloff=5
-endfunction
-
-autocmd! User GoyoEnter
-autocmd! User GoyoLeave
-autocmd  User GoyoEnter nested call <SID>goyo_enter()
-autocmd  User GoyoLeave nested call <SID>goyo_leave()
 " <<< VUNDLE END <<<
 
 " Color Syntax Highlighting
@@ -191,7 +164,7 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Status Line
-set statusline=%<(%f)\ %h%m%r%=%-14.(%l/%L%)\ %P
+"set statusline=%<(%f)\ %h%m%r%=%-14.(%l/%L%)\ %P
 
 " Rebinds
 " Highly recommended you rebind CapsLock as Ctrl!
@@ -253,9 +226,6 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 " ,ft  Fold tag
 nnoremap <leader>ft Vatzf
-
-" ,g   Toggle 'WriteRoom' mode
-nnoremap <leader>g :Goyo<cr>
 
 " ,q   Re-hardwrap paragraphs of text
 nnoremap <leader>q gqip
