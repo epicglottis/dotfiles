@@ -72,10 +72,7 @@ autocmd  User GoyoLeave nested call <SID>goyo_leave()
 
 " Color Syntax Highlighting
 set t_Co=256
-set background=dark
-if &t_Co >= 256 || has("gui_running")
-   colorscheme epic
-endif
+colorscheme epic
 
 if has('gui_running')
   set guifont=Source Code Pro\ 14
@@ -217,7 +214,7 @@ nmap <F8> :TagbarToggle<CR><C-w>=
 nmap <leader>8 :TagbarToggle<CR>
 
 " Get rid of that annoying F1 help message
-noremap <F1> <ESC>
+"noremap <F1> <ESC>
 
 " Turn off arrow keys
 noremap <up> <nop>
