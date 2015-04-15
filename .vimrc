@@ -16,10 +16,34 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'majutsushi/tagbar'
 " WriteRoom style focus mode:
 Plugin 'junegunn/goyo.vim'
+" Ctrl-P
+Plugin 'kien/ctrlp.vim'
+" NERDTree
+Plugin 'scrooloose/nerdtree'
+" Syntax checking
+" Plugin 'scrooloose/syntastic'
+" Airline
+Plugin 'bling/vim-airline'
+" Show hex colors in editor :)
+Plugin 'ap/vim-css-color'
 
 " All of your Plugins must be added before the following line
 call vundle#end()              " required
 filetype plugin indent on      " required
+
+" NERDTree config
+nmap \e :NERDTreeToggle<CR>
+nmap <F1> :NERDTreeToggle<CR>
+
+" Ctrl-P config
+nmap <F2> :CtrlPBuffer<CR>
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
 " Goyo plugin config
 let g:goyo_width = 80
@@ -105,7 +129,6 @@ au BufEnter * silent! lcd %:p:h
 
 " For split screen users: higlight the status line of the active window
 set laststatus=2               " Always display the last status
-hi StatusLine ctermfg=Cyan
 
 " code folding
 set foldmethod=syntax
@@ -175,12 +198,13 @@ set statusline=%<(%f)\ %h%m%r%=%-14.(%l/%L%)\ %P
 
 " Rebinds
 " Highly recommended you rebind CapsLock as Ctrl!
-" ; behaves the same as :
+" ; behaves the same as : (because typos)
 nnoremap ; :
-" jj is also esc
+
+" jj is also esc and ctrl-c
 inoremap jj <ESC>
-nnoremap j gj
-nnoremap k gk
+nmap j gj
+nmap k gk
 
 " F5 toggles paste mode
 noremap <F5> :set invpaste paste?<CR>
