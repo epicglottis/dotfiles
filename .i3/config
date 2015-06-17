@@ -99,26 +99,18 @@ bindsym Control+Mod1+l exec i3lock --color=000000
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  colors {
-    background #000000
-    statusline #9f9f9f
-    separator #666666
-    
-    focused_workspace #4c7899 #285577 #ffffff
-    active_workspace #333333 #5f676a #ffffff
-    inactive_workspace #333333 #222222 #888888
-    urgent_workspace #2f343a #900000 #ffffff
-  }
-  status_command i3status
-  position top
+    status_command i3status
+    position top
 }
 
 # Hide borders!
-for_window [class="^Google-chrome$"] border none
-for_window [class="^URxvt$"] border none
+for_window [class="^Google-chrome$"] border 1pixel
+for_window [class="^URxvt$"] border 1pixel
 
 # Move workspace to other monitor
 bindsym $mod+m move workspace to output left
 
 # Hangouts/browser pop-ups should float
 for_window [window_role="pop-up"] floating enable,move absolute center
+# Google Music: WM_CLASS(STRING) = "crx_fahmaaghhglfmonjliepjlchgpgfmobi", "Google-chrome" 
+for_window [class="Google-chrome" instance="crx_fahmaaghhglfmonjliepjlchgpgfmobi"] floating enable,move absolute center
