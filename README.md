@@ -1,6 +1,7 @@
 # dotfiles
 
 ![colors](/colors.png?raw=true "epic color palette")
+
 Complimentary colorschemes use these primary colors:
 ```
 Green:  #5FD700  colour76
