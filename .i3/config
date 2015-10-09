@@ -61,6 +61,9 @@ bindsym $mod+e layout default
 # Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+# Move workspace to other monitor
+bindsym $mod+m move workspace to output left
+
 # Switch to workspace
 bindsym $mod+1 workspace number 1                                                                                                                   
 bindsym $mod+2 workspace number 2                                                                                                                   
@@ -108,10 +111,8 @@ bar {
 
 # Hide borders!
 for_window [class="^Google-chrome$"] border 1pixel
+for_window [class="^google-chrome-beta$"] border 1pixel
 for_window [class="^URxvt$"] border 1pixel
-
-# Move workspace to other monitor
-bindsym $mod+m move workspace to output left
 
 # Hangouts/browser pop-ups should float
 for_window [window_role="pop-up"] floating enable,move absolute center
