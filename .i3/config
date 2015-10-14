@@ -65,28 +65,28 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+m move workspace to output left
 
 # Switch to workspace
-bindsym $mod+1 workspace number 1 chat
-bindsym $mod+2 workspace number 2 mail-cal
-bindsym $mod+3 workspace number 3 
-bindsym $mod+4 workspace number 4 
-bindsym $mod+5 workspace number 5 
-bindsym $mod+6 workspace number 6 music
-bindsym $mod+7 workspace number 7 
-bindsym $mod+8 workspace number 8 
-bindsym $mod+9 workspace number 9 
-bindsym $mod+0 workspace number 10 
+bindsym $mod+1 workspace number 1 chat₁
+bindsym $mod+2 workspace number 2 ✉₂
+bindsym $mod+3 workspace number 3 ₃
+bindsym $mod+4 workspace number 4 ₄
+bindsym $mod+5 workspace number 5 ₅
+bindsym $mod+6 workspace number 6 ♫₆
+bindsym $mod+7 workspace number 7 ₇
+bindsym $mod+8 workspace number 8 ₈
+bindsym $mod+9 workspace number 9 ₉
+bindsym $mod+0 workspace number 10 ₀
 
 # Move focused container to workspace
-bindsym $mod+Shift+exclam move workspace 1 chat
-bindsym $mod+Shift+at move workspace 2 mail-cal
-bindsym $mod+Shift+numbersign move workspace 3
-bindsym $mod+Shift+dollar move workspace 4
-bindsym $mod+Shift+percent move workspace 5
-bindsym $mod+Shift+asciicircum move workspace 6 music
-bindsym $mod+Shift+ampersand move workspace 7
-bindsym $mod+Shift+asterisk move workspace 8
-bindsym $mod+Shift+parenleft move workspace 9
-bindsym $mod+Shift+parenright move workspace 10
+bindsym $mod+Shift+exclam move workspace 1 chat₁
+bindsym $mod+Shift+at move workspace 2 ✉₂
+bindsym $mod+Shift+numbersign move workspace 3 ₃
+bindsym $mod+Shift+dollar move workspace 4 ₄
+bindsym $mod+Shift+percent move workspace 5 ₅
+bindsym $mod+Shift+asciicircum move workspace 6 ♫₆
+bindsym $mod+Shift+ampersand move workspace 7 ₇
+bindsym $mod+Shift+asterisk move workspace 8 ₈
+bindsym $mod+Shift+parenleft move workspace 9 ₉
+bindsym $mod+Shift+parenright move workspace 10 ₀
 
 # Reload the configuration file
 bindsym $mod+Shift+C reload
