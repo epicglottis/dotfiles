@@ -2,7 +2,7 @@
 
 ![colors](/colors.png?raw=true "epic color palette")
 
-Complimentary colorschemes use these primary colors:
+Includes complimentary colorschemes for term apps that use these primary colors:
 ```
 Green:  #5FD700  colour76
 Blue:   #5F87D7  colour68
