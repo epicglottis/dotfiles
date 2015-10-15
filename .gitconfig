@@ -1,2 +1,5 @@
 [user]
   email = epicglottis@gmail.com
+
+[alias]
+  graph = log --graph --oneline --branches
