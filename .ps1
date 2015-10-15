@@ -38,7 +38,7 @@ _ps1() {
   DATE="\[$BLUE\]\D{%Y-%m-%d %H:%M:%S}"
   
   # TODO: Add a cute unicode symbol instead of @ :)
-  P="\[$BGREEN\]\u\[$BGREEN\]@\[$LCYAN\]\h\[$NONE\]:"
+  P="\[$BGREEN\]\u\[$BGREEN\]\[$NONE\]@\[$LBLUE\]\h\[$NONE\]:"
 
   # Partial path if in clients directory:
   CLIENTDIR="~/src/"
