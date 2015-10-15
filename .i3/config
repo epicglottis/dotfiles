@@ -21,7 +21,7 @@ bindsym $mod+Shift+Q kill
 # Start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 
-# I use portrait monitors                                                                                                                           
+# I use portrait monitors
 default_orientation vertical
 
 # Change focus
