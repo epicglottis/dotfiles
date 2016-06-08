@@ -41,8 +41,8 @@ URxvt*cursorBlink: true
 ! urxvt colors:
 URxvt*foreground: #FEFEFE
 URxvt*background: #0c0d0e
-URxvt*colorUL:  yellow
-URxvt*underlineColor:  yellow
+URxvt*colorUL:  #5F87D7
+URxvt*underlineColor:  #5F87D7
 
 ! black
 URxvt*color0  : #2E3436
