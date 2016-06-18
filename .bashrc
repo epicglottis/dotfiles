@@ -2,7 +2,6 @@
 # If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
 
-
 ####################
 # Common
 ####################
@@ -10,17 +9,8 @@
 export TERM=rxvt-unicode
 export LANG=en_US.UTF-8
 
-# Default emacs shortcuts suck. Use vi mode instead:
-set -o vi
-
-# Common vi mode keys:
-# hjkl Move cursor
-# A	   Move cursor to end of line and put in insert mode
-# 0	   (zero) Move cursor to beginning of line (doesn't put in insert mode) 
-# dd   Delete line (saved for pasting)
-# j	   Move up through history commands
-# k	   Move down through history commands
-# u	   Undo
+# Cursor should be a steady underline
+echo -e -n "\x1b[\x34 q" 
 
 # Redo line wraps after resizing.
 shopt -s checkwinsize
@@ -39,32 +29,6 @@ fi
 ####################
 # Fix tmux vim colors.
 alias tmux="TERM=screen-256color-bce tmux"
-
-
-####################
-# HELPERS
-####################
-# Extract all archives with a single command
-extract () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1     ;;
-      *.tar.gz)    tar xzf $1     ;;
-      *.bz2)       bunzip2 $1     ;;
-      *.rar)       unrar e $1     ;;
-      *.gz)        gunzip $1      ;;
-      *.tar)       tar xf $1      ;;
-      *.tbz2)      tar xjf $1     ;;
-      *.tgz)       tar xzf $1     ;;
-      *.zip)       unzip $1       ;;
-      *.Z)         uncompress $1  ;;
-      *.7z)        7z x $1        ;;
-      *)     echo "'$1' cannot be extracted via extract()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
 
 
 ####################
