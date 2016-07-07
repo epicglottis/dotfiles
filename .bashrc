@@ -1,4 +1,5 @@
 # bashrc
+
 # If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
 
@@ -6,11 +7,11 @@
 # Common
 ####################
 # Use URxvt:
-export TERM=rxvt-unicode
 export LANG=en_US.UTF-8
+export TERM=rxvt-unicode
 
 # Cursor should be a steady underline
-echo -e -n "\x1b[\x34 q" 
+echo -e -n "\x1b[\x34 q"
 
 # Redo line wraps after resizing.
 shopt -s checkwinsize
@@ -36,14 +37,12 @@ alias tmux="TERM=screen-256color-bce tmux"
 ####################
 # Don't put duplicate lines in the history.
 HISTCONTROL=ignoredups:ignorespace
-
 # Append to the history file, don't overwrite it.
 shopt -s histappend
-
-# Increase history length.
-HISTSIZE=64000
-HISTFILESIZE=64000
-
+# Unlimited number of commands to remember.
+HISTSIZE=
+# Unlimited number of lines to write.
+HISTFILESIZE=
 # Add timestamps to bash_history:
 export HISTTIMEFORMAT="%F %T "
 
