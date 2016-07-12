@@ -48,7 +48,7 @@ _ps1() {
   P="$P\$(_ps1_git)"
 
   # End of prompt
-  P="$P\[$NONE\]\n\\] "
+  P="$P\[$NONE\]\n]"
 
   # Only set title for capable terminals
   case "$TERM" in
