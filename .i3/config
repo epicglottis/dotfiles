@@ -1,5 +1,10 @@
 # i3 config file
 
+# autostart
+exec --no-startup-id feh --bg-fill /home/tom/Pictures/planet-express.jpg
+exec --no-startup-id /usr/bin/indicator-cpufreq
+exec --no-startup-id /usr/bin/nm-applet
+
 # mod == Windows key
 set $mod Mod4
 
@@ -102,9 +107,22 @@ bindsym $mod+Shift+E exit
 # ctrl+alt+l locks screen
 bindsym Control+Mod1+l exec i3lock --color=000000
 
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+  colors {
+    background #262626                                                                              
+    statusline #E2E4E5
+  }
     status_command i3status
     position top
 }
