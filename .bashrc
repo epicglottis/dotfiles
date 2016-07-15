@@ -119,5 +119,7 @@ bind -m vi-insert "\C-l":clear-screen
 ####################
 # EXPORTS
 ####################
+export GOPATH=$HOME/gopath                                                                            
+export PATH=$PATH:$GOPATH:$GOPATH/bin
 export EDITOR='vim'
 export PATH=$PATH:/home/$(whoami)/scripts
