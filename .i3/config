@@ -1,6 +1,7 @@
 # i3 config file
 
 # autostart
+exec --no-startup-id compton -CG --vsync opengl --backend glx
 exec --no-startup-id feh --bg-fill /home/tom/Pictures/planet-express.jpg
 exec --no-startup-id /usr/bin/indicator-cpufreq
 exec --no-startup-id /usr/bin/nm-applet
