@@ -11,7 +11,8 @@ export LANG=en_US.UTF-8
 export TERM=rxvt-unicode
 
 # Cursor should be a steady underline
-echo -e -n "\x1b[\x34 q"
+# echo -e -n "\x1b[\x34 q"
+echo -e -n "\x1b[\x30 q"
 
 # Redo line wraps after resizing.
 shopt -s checkwinsize
@@ -39,10 +40,10 @@ alias tmux="TERM=screen-256color-bce tmux"
 HISTCONTROL=ignoredups:ignorespace
 # Append to the history file, don't overwrite it.
 shopt -s histappend
-# Unlimited number of commands to remember.
-HISTSIZE=
 # Unlimited number of lines to write.
-HISTFILESIZE=
+export HISTFILESIZE=
+# Unlimited number of commands to remember.
+export HISTSIZE=
 # Add timestamps to bash_history:
 export HISTTIMEFORMAT="%F %T "
 
@@ -80,9 +81,9 @@ export LESSOPEN="| ~/scripts/.lessfilter.sh %s"
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
 export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
 export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
 export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
 export LESS_TERMCAP_mr=$(tput rev)
 export LESS_TERMCAP_mh=$(tput dim)
@@ -103,6 +104,16 @@ alias ll='ls -harlotF'
 alias pps='ps awwfux'
 alias ddf='df -Tha --total'
 alias ddu='du -ach | sort -h'
+alias cpu_usage="ps -eo pcpu | egrep -v '0.0|CPU' | awk '{sum+=$1}END{print sum}'"
+# view mount points with a decent layout
+alias mountview='mount | column -t'
+# show bash shortcuts
+alias bash_shortcuts='bind -P'
+# git shortcuts
+alias gitlog="git log --graph --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --decorate --color"
+alias gittag="git tag -n |sort -V"
+# python server (useful for file transfers)
+alias pyserv="python -m SimpleHTTPServer"
 
 
 ####################
@@ -119,7 +130,6 @@ bind -m vi-insert "\C-l":clear-screen
 ####################
 # EXPORTS
 ####################
-export GOPATH=$HOME/gopath                                                                            
-export PATH=$PATH:$GOPATH:$GOPATH/bin
 export EDITOR='vim'
 export PATH=$PATH:/home/$(whoami)/scripts
+export PATH=$PATH:~/$(whoami)/scripts
