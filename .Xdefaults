@@ -19,10 +19,10 @@ URxvt*matcher.button:   1
 Urxvt*urlLauncher:      /usr/bin/google-chrome
 
 ! Font:
-URxvt*font: xft:Source Code Pro:pixelsize=20:antialias=false:autohint=true
-URxvt*boldFont: xft:Source Code Pro:bold:pixelsize=20:antialias=false:autohint=true
-URxvt*italicFont: xft:Source Code Pro:italic:pixelsize=20:antialias=false:autohint=true
-URxvt*boldItalicFont: xft:Source Code Pro:bold:italic:pixelsize=20:antialias=false:autohint=true
+URxvt*font: xft:Source Code Pro:pixelsize=20:antialias=true:autohint=true
+URxvt*boldFont: xft:Source Code Pro:bold:pixelsize=20:antialias=true:autohint=true
+URxvt*italicFont: xft:Source Code Pro:italic:pixelsize=20:antialias=true:autohint=true
+URxvt*boldItalicFont: xft:Source Code Pro:bold:italic:pixelsize=20:antialias=true:autohint=true
 Xft*hinting: full
 URxvt*allow_bold: true
 URxvt.letterSpace: -1
